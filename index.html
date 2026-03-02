@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HypeVPR project page">
+  <meta name="keywords" content="HypeVPR, P2E VPR, Hyperbolic Space, Visual Place Recognition">
+  <title>HypeVPR: Exploring Hyperbolic Space for P2E Visual Place Recognition</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+  <style>
+    .section-title {
+      margin-bottom: 1rem;
+    }
+    .figure-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 0.75rem;
+      background: #fff;
+    }
+    .figure-card img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+    .figure-caption {
+      margin-top: 0.75rem;
+      color: #4a4a4a;
+      line-height: 1.55;
+    }
+    .feature-small {
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .big-vis {
+      padding: 0.5rem;
+    }
+    .big-vis img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+    .failure-card {
+      border: 1px solid #ffd4d4;
+      background: #fff8f8;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-1 publication-title">HypeVPR</h1>
+      <p class="subtitle is-4">
+        Exploring Hyperbolic Space for Perspective to Equirectangular Visual Place Recognition
+      </p>
+      <div class="is-size-5 publication-authors mt-3">
+        <span class="author-block"><a href="https://suhan-woo.github.io/">Suhan Woo</a><sup>1</sup>,</span>
+        <span class="author-block"><a href="https://sungonce.github.io/">Seongwon Lee</a><sup>2</sup>,</span>
+        <span class="author-block">Jinwoo Jang<sup>1</sup>,</span>
+        <span class="author-block"><a href="http://cilab.yonsei.ac.kr">Euntai Kim</a><sup>*1,3</sup></span>
+      </div>
+      <div class="is-size-6 publication-authors">
+        <span class="author-block"><sup>1</sup>Yonsei University,</span>
+        <span class="author-block"><sup>2</sup>Kookmin University,</span>
+        <span class="author-block"><sup>3</sup>Korea Institute of Science and Technology (KIST)</span>
+      </div>
+      <p class="is-size-7 has-text-grey mt-2">* Corresponding author</p>
+
+      <div class="column has-text-centered mt-4">
+        <div class="publication-links">
+          <span class="link-block">
+            <a href="https://arxiv.org/pdf/2506.04764" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>Paper</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href="https://arxiv.org/abs/2506.04764" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href="https://github.com/suhan-woo/HypeVPR" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="figure-card">
+      <img src="./static/images/figure1.png" alt="Figure 1: HypeVPR overview and comparison">
+      <p class="figure-caption">
+        We propose a P2E matching framework that exploits the geometric properties of
+        hyperbolic space to model panoramic hierarchy with low distortion.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Abstract</h2>
+    <div class="content is-size-5 has-text-justified">
+      <p>
+        Visual environments are inherently hierarchical, as a panoramic view naturally encompasses and organizes
+        multiple perspective views within its field. Capturing this hierarchy is crucial for effective
+        perspective-to-equirectangular (P2E) visual place recognition.
+      </p>
+      <p>
+        In this work, we introduce <strong>HypeVPR</strong>, a hierarchical embedding framework in hyperbolic space
+        specifically designed to address the challenges of P2E matching. HypeVPR leverages the intrinsic ability of
+        hyperbolic space to represent hierarchical structures, allowing panoramic descriptors to encode both broad
+        contextual information and fine-grained local details.
+      </p>
+      <p>
+        To this end, we propose a hierarchical feature aggregation mechanism that organizes local-to-global feature
+        representations within hyperbolic space. Furthermore, HypeVPR's hierarchical organization inherently enables
+        flexible control over the accuracy-efficiency trade-off without additional training, while maintaining robust
+        matching across different image types.
+      </p>
+      <p>
+        This approach allows HypeVPR to outperform existing methods while significantly accelerating retrieval and
+        reducing database storage requirements.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Motivation and Approach</h2>
+    <div class="content is-size-5 has-text-justified">
+      <p>
+        <strong>The P2E VPR Challenge:</strong>
+        Conventional Visual Place Recognition methods rely on perspective-to-perspective (P2P) matching, requiring
+        densely sampled databases with view-specific images from all viewing directions. This leads to substantial
+        storage demands and high retrieval costs, limiting scalability for real-world mobile systems.
+      </p>
+      <p>
+        <strong>Why Panoramic Databases?</strong>
+        The perspective-to-equirectangular (P2E) framework offers a promising alternative by using panoramic
+        equirectangular images in the database. Each location can be represented by a single panorama rather than
+        multiple directional views, significantly reducing redundancy.
+      </p>
+      <p>
+        <strong>Why Hyperbolic Space?</strong>
+        Panoramic views naturally encompass multiple perspective observations within a single scene. These
+        relationships form an inherent hierarchical structure. Hyperbolic space naturally models hierarchical
+        relationships with minimal distortion—enabling compact encoding of broad contextual structure that is
+        difficult to achieve in Euclidean space.
+      </p>
+      <p>
+        HypeVPR divides each panoramic view into regions with varying fields of view (FoVs) and organizes their
+        features hierarchically: <em>higher levels capture coarse global context</em>, while <em>lower levels encode
+        fine, localized details</em>. This hierarchical organization enables adaptive retrieval by selectively
+        activating descriptors at different levels, offering a flexible balance between accuracy and efficiency.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Model Overview</h2>
+    <div class="content is-size-5 has-text-justified">
+      <p>
+        <strong>Hierarchical Modeling:</strong>
+        HypeVPR defines an L-level structure by progressively halving the horizontal field of view of equirectangular
+        images. The top level is the full panorama, and each subsequent level captures increasingly fine-grained
+        spatial details.
+      </p>
+      <p>
+        <strong>Hierarchical Aggregation Module (HAM):</strong>
+        The model employs a shared backbone network to extract features from both query and database images. For
+        database panoramas, features are aggregated across multiple levels using hyperbolic averaging in the Poincaré
+        ball model. This norm-aware weighting preserves hyperbolic geometry and enables effective multi-level
+        descriptor fusion.
+      </p>
+      <p>
+        <strong>Adjustable Hierarchical Retrieval:</strong>
+        Instead of relying solely on a top-level descriptor, HypeVPR uses lower-level descriptors to refine initial
+        retrieval results. By controlling which hierarchy levels are activated, the system flexibly balances accuracy
+        and efficiency without requiring additional training.
+      </p>
+    </div>
+    <div class="figure-card mt-4">
+      <img src="./static/images/Model.png" alt="Model architecture and Hierarchical Aggregation Module">
+      <p class="figure-caption">
+        <strong>Network architecture.</strong> (a) Overall training scheme with shared backbone and hierarchical
+        aggregation. (b) Illustration of the Hierarchical Aggregation Module (HAM), which organizes features from
+        local to global levels within hyperbolic space.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Key Results</h2>
+    <div class="columns">
+      <div class="column">
+        <div class="figure-card">
+          <img src="./static/images/feat_vis.png" alt="Feature visualization in Poincare ball">
+          <p class="figure-caption">
+            <strong>Hierarchical Feature Organization.</strong>
+            Visualization of 1,000 test descriptors on the Poincaré ball manifold. Higher-level descriptors
+            (h<sup>(1)</sup>) concentrate near the origin (abstract semantics), while lower-level descriptors
+            appear closer to the boundary (fine-grained details).
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="figure-card">
+          <img src="./static/images/performance.png" alt="Performance comparison radar chart">
+          <p class="figure-caption">
+            <strong>Performance Comparison.</strong>
+            HypeVPR variants (HypeVPR-B, HypeVPR-L) achieve favorable trade-offs across speed, recall, and storage
+            efficiency compared to state-of-the-art methods including EigenPlace, CosPlace, BoQ, CricaVPR, and SALAD.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="content is-size-5 has-text-justified mt-4">
+      <p>
+        <strong>Performance Highlights on SF-XL Dataset:</strong>
+      </p>
+      <p>
+        All quantitative results are evaluated on the large-scale <strong>SF-XL dataset</strong>. The original SF-XL
+        database contains 2.8M perspective view (PV) images. By using panoramic representation, we construct a P2E
+        benchmark with only <strong>233,820 panoramic database images (0.23M)</strong>—<strong>reducing the database
+        size by over 12×</strong> while maintaining full spatial coverage of the San Francisco area. This substantial
+        reduction demonstrates the storage efficiency advantage of the P2E framework.
+      </p>
+      <ul>
+        <li>HypeVPR-B achieves R@1 of 79.6% on Pitts250K-P2E—on par with EigenPlace—while delivering over <strong>5×
+          faster retrieval</strong> and <strong>nearly 2× lower storage</strong> usage.
+        </li>
+        <li>HypeVPR-L attains R@1 of 81.2%, surpassing EigenPlace while maintaining over <strong>2× faster
+          retrieval</strong>.
+        </li>
+        <li>Even with only the top-level descriptor (HypeVPR-O), the model achieves <strong>61× faster retrieval</strong>
+          and requires <strong>66× less storage</strong> than SALAD.
+        </li>
+        <li>On the large-scale SF-XL dataset, HypeVPR-L is <strong>11× faster</strong> than SALAD and requires only
+          <strong>one-third of its storage</strong>, while achieving competitive recall (R@1 of 85.2%).
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Descriptor Visualization: Successful Cases</h2>
+    <div class="content is-size-5 has-text-justified mb-4">
+      <p>
+        These visualizations show the hierarchical descriptor distribution of individual database images on the
+        Poincaré ball. In successful cases, the <strong>highest-level (global) descriptor</strong> and
+        <strong>lowest-level (local) descriptors</strong> are mapped to similar regions of the manifold, maintaining
+        geometric consistency across hierarchy levels. This alignment ensures that when a query is given, both
+        coarse and fine-grained matching produce coherent results.
+      </p>
+    </div>
+
+    <div class="figure-card big-vis mb-4">
+      <img src="./static/images/desc_vis_1.png" alt="Successful descriptor visualization 1">
+    </div>
+    <div class="figure-card big-vis mb-4">
+      <img src="./static/images/desc_vis_2.png" alt="Successful descriptor visualization 2">
+    </div>
+    <div class="figure-card big-vis">
+      <img src="./static/images/desc_vis_3.png" alt="Successful descriptor visualization 3">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Descriptor Visualization: Failure Case</h2>
+    <div class="content is-size-5 has-text-justified mb-4">
+      <p>
+        In contrast, this visualization shows a failure case where the <strong>highest-level (global) descriptor</strong>
+        and <strong>lowest-level (local) descriptors</strong> are mapped to <strong>opposite sides of the Poincaré
+        ball</strong>, breaking hierarchical consistency. This geometric misalignment causes coarse and fine-grained
+        matching to produce conflicting results when a query is given, ultimately leading to retrieval failure.
+      </p>
+    </div>
+    
+    <div class="figure-card failure-card">
+      <img src="./static/images/desc_vis_fail.png" alt="Failure case visualization">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{woo2026hypevpr,
+  title     = {HypeVPR: Exploring Hyperbolic Space for Perspective to Equirectangular Visual Place Recognition},
+  author    = {Woo, Suhan and Lee, Seongwon and Jang, Jinwoo and Kim, Euntai},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2026}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+            <p>
+                The source code of this website is borrowed from <a href="https://nerfies.github.io">Nerfies</a>.
+            </p>
+          <p>
+
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
