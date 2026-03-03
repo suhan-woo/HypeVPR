@@ -15,6 +15,16 @@
 
   <script defer src="./static/js/fontawesome.all.min.js"></script>
 
+    <!-- MathJax for mathematical notation -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
   <style>
     .section-title {
       margin-bottom: 1rem;
@@ -192,12 +202,6 @@
         ball model. This norm-aware weighting preserves hyperbolic geometry and enables effective multi-level
         descriptor fusion.
       </p>
-      <p>
-        <strong>Adjustable Hierarchical Retrieval:</strong>
-        Instead of relying solely on a top-level descriptor, HypeVPR uses lower-level descriptors to refine initial
-        retrieval results. By controlling which hierarchy levels are activated, the system flexibly balances accuracy
-        and efficiency without requiring additional training.
-      </p>
     </div>
     <div class="figure-card mt-4">
       <img src="./static/images/Model.png" alt="Model architecture and Hierarchical Aggregation Module">
@@ -205,6 +209,17 @@
         <strong>Network architecture.</strong> (a) Overall training scheme with shared backbone and hierarchical
         aggregation. (b) Illustration of the Hierarchical Aggregation Module (HAM), which organizes features from
         local to global levels within hyperbolic space.
+      </p>
+    </div>
+
+    
+    <div class="content is-size-5 has-text-justified mt-4">
+      <p>
+        <strong>Adjustable Hierarchical Retrieval:</strong>
+        Instead of relying solely on a top-level descriptor, HypeVPR uses lower-level descriptors to refine initial
+        retrieval results. Specifically, HypeVPR-B leverages descriptors at levels $\mathbf{h}_d^{(1)}$ and $\mathbf{h}_d^{(L-1)}$, 
+        while HypeVPR-L utilizes $\mathbf{h}_d^{(1)}$ and $\mathbf{h}_d^{(L)}$. By controlling which hierarchy levels 
+        are activated, the system flexibly balances accuracy and efficiency without requiring additional training.
       </p>
     </div>
   </div>
